@@ -1,11 +1,14 @@
 #pragma once
 #include "Window.h"
+#include "StateMachine.h"
+
 
 struct GameTools
 {
 	//members
-	//StateMachine m_gameStates;
+	StateMachine m_gameStates;
 	Window m_window;
+	//MediaPlayer m_media;
 };
 
 
