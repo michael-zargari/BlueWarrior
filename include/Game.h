@@ -1,7 +1,7 @@
 #pragma once
-#include "Window.h"
-#include "StateMachine.h"
 
+#include "Window.h"
+#include "StateMachine.h";
 
 struct GameTools
 {

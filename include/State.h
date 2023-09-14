@@ -1,9 +1,13 @@
 #pragma once
 
+#include "Macro.h"
+#include "GameResources.h"
+
 class State
 {
+public:
 	State() = default;
-	~State() = default;
+	virtual ~State() = default;
 
 	//virtual funcs
 	virtual void processManeger() = 0;

@@ -11,7 +11,7 @@ public:
 	~StateMachine() = default;
 
 	//states funcs
-	void addState(std::unique_ptr<State>, bool);
+	void addState(std::unique_ptr<State> , bool);
 	void removeState();
 	void checkForUpdates();
 
