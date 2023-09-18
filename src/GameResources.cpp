@@ -26,12 +26,13 @@ sf::Font& GameResources::getFont(const int& index)
 
 
 //create the text 
-sf::Text& GameResources::createText(const std::string& dataName, const sf::Color& color, const int& font, const int& size)
+sf::Text& GameResources::createText(const std::string& dataName, const sf::Color& color, const int& font, const int& size, sf::Vector2f position)
 {
     m_text.setString(dataName);
     m_text.setFont(getFont(font));
     const auto rect = m_text.getLocalBounds();
     m_text.setOrigin(rect.width / 2, rect.height / 2);
+    m_text.setPosition(position);
     m_text.setCharacterSize(size);
     m_text.setFillColor(color);
     m_text.setStyle(sf::Text::Bold);

@@ -13,11 +13,12 @@ public:
 	void update() override;
 	void Draw() override;
 	//virtual void Resume() = 0;
-
+	void drawMenu();
 protected:
 	void initilaize()override;
 
 private:
 	std::shared_ptr<GameTools> m_gameTools;
 	sf::Text m_developerName;
+	std::array<sf::Text, 4> m_menuOptions;
 };

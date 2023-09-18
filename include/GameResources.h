@@ -23,7 +23,7 @@ public:
 	//musicCommand getMusicStatus() const;
 
 	sf::Font& getFont(const int& index);
-	sf::Text& createText(const std::string&, const sf::Color&, const int&, const int& );
+	sf::Text& createText(const std::string&, const sf::Color&, const int&, const int& , sf::Vector2f);
 
 private:
 	//constructor/ distructor

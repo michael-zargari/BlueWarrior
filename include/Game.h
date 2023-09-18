@@ -3,6 +3,10 @@
 #include "Window.h"
 #include "StateMachine.h";
 
+#include <array>
+#include <vector>
+#include <string>
+
 struct GameTools
 {
 	//members
