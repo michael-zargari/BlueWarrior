@@ -37,7 +37,7 @@ private:
 
 	//members
 	sf::Text m_text;
-	std::array <sf::Font, 2> m_font;
+	std::array <sf::Font, 5> m_font;
 };
 
 /*//members

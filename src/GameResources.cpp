@@ -20,7 +20,7 @@ GameResources& GameResources::getInstance()
 //get font
 sf::Font& GameResources::getFont(const int& index)
 {
-    if (index < 2 && index >= 0)
+    if (index < 4 && index >= 0)
         return m_font[index];
 }
 
@@ -51,8 +51,8 @@ void GameResources::initTextures()
 //load the fonts for the game
 void GameResources::initFonts()
 {
-    std::array<std::string, 2> fontsPath = { "C:/Windows/Fonts/Arial.ttf" ,"C:/Windows/Fonts/Ravie.ttf" };
-    for (int i = 0; i < 2; i++)
+    std::array<std::string, 4> fontsPath = { "C:/Windows/Fonts/Arial.ttf" ,"C:/Windows/Fonts/Ravie.ttf", "C:/Windows/Fonts/ARLRDBD.ttf", "C:/Windows/Fonts/ALGER.ttf"};
+    for (int i = 0; i < 4; i++)
     {
         sf::Font temp;
         temp.loadFromFile(fontsPath[i]);
