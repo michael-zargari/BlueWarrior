@@ -14,7 +14,8 @@ public:
 	void Draw() override;
 	//virtual void Resume() = 0;
 	void drawMenu();
-	void optionSelect(sf::Keyboard::Key&);
+	void handleKey(sf::Keyboard::Key&);
+	void arrowPressed(const int&); 
 protected:
 	void initilaize()override;
 
@@ -23,4 +24,5 @@ private:
 	sf::Text m_developerName;
 	std::array<sf::Text, 4> m_menuOptions;
 	int m_currentOption;
+	bool m_choose;
 };

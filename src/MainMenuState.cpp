@@ -1,7 +1,7 @@
 #include "MainMenuState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<GameTools> tools)
-	:m_gameTools(tools), m_currentOption{0}
+	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{false}
 {
 	initilaize();
 }
@@ -17,7 +17,7 @@ void MainMenuState::processManeger()
 			break;
 
 		case sf::Event::KeyPressed:
-			optionSelect(event.key.code);
+			handleKey(event.key.code);
 		}
 		
 
@@ -46,19 +46,32 @@ void MainMenuState::drawMenu()
 	m_gameTools->m_window.getWindow().draw(m_developerName);
 }
 
-void MainMenuState::optionSelect(sf::Keyboard::Key& key)
+void MainMenuState::handleKey(sf::Keyboard::Key& key)
 {
 	switch (key)
 	{
 	case sf::Keyboard::Up:
-		m_menuOptions[m_currentOption].setFillColor(sf::Color::White);
-		m_currentOption--;
+		arrowPressed(-1);
 		break;
-	case sf::Keyboard::Down: m_currentOption++; break;
-	// case sf::Keyboard::Enter: selectOption(); break;
+	case sf::Keyboard::Down:
+		arrowPressed(1);
+		break;
+	case sf::Keyboard::Enter: 
+		m_choose = true; 
+		break;
 	default:;
 	}
-	
+}
+
+void MainMenuState::arrowPressed(const int& direction)
+{
+	m_menuOptions[m_currentOption].setOutlineThickness(0);
+	m_menuOptions[m_currentOption].setFillColor(sf::Color::White);
+	m_currentOption += (NUM_OF_OPTIONS + direction);
+	m_currentOption %= NUM_OF_OPTIONS;
+	m_menuOptions[m_currentOption].setFillColor(sf::Color::Yellow);
+	m_menuOptions[m_currentOption].setOutlineColor(sf::Color::Magenta);
+	m_menuOptions[m_currentOption].setOutlineThickness(2);
 }
 
 void MainMenuState::initilaize()
