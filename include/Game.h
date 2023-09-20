@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Window.h"
-#include "StateMachine.h";
+#include "assets/StateMachine.h";
 
 #include <array>
 #include <vector>

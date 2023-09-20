@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Macro.h"
-#include "GameResources.h"
+#include "assets/GameResources.h"
 
 class State
 {

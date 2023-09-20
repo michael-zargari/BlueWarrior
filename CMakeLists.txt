@@ -13,7 +13,7 @@ target_link_options(${CMAKE_PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:-fsanitize=a
 add_subdirectory (include)
 add_subdirectory (src)
 add_subdirectory (resources)
-
+include_directories(${PROJECT_SOURCE_DIR}/include/assets)
 include (cmake/Zip.cmake)
 
 set (SFML_LOCATION "C:/SFML/SFML-2.6.0")
