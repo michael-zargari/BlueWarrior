@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "MainMenuState.h"
+#include "states/MainMenuState.h"
 
 Game::Game()
 	:m_gameTools {std::make_shared<GameTools>()}

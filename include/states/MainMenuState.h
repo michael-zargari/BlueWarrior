@@ -1,6 +1,7 @@
 #pragma once
 
-#include "State.h"
+#include "states/State.h"
+#include "assets/Animation.h"
 #include "Game.h"
 
 class MainMenuState : public State
@@ -25,4 +26,6 @@ private:
 	std::array<sf::Text, 4> m_menuOptions;
 	int m_currentOption;
 	bool m_choose;
+	Animation character;
+	
 };

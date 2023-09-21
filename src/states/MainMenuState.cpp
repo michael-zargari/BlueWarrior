@@ -1,7 +1,7 @@
-#include "MainMenuState.h"
+#include "states/MainMenuState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<GameTools> tools)
-	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{false}
+	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{ false }, character{Characters::Skeleton}
 {
 	initilaize();
 }
@@ -26,7 +26,8 @@ void MainMenuState::processManeger()
 
 void MainMenuState::update()
 {
-	;
+	if (m_choose)
+		;// m_gameTools->m_gameStates.addState(std::make_unique<PlayState>(), true);
 }
 
 void MainMenuState::Draw()
@@ -44,6 +45,7 @@ void MainMenuState::drawMenu()
 
 	//draw developer
 	m_gameTools->m_window.getWindow().draw(m_developerName);
+	character.draw(m_gameTools->m_window.getWindow());
 }
 
 void MainMenuState::handleKey(sf::Keyboard::Key& key)

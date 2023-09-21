@@ -5,7 +5,7 @@ GameResources::GameResources()
 {
     initTextures();
     initFonts();
-    initSounds();
+    //initSounds();
 }
 
 //static func - singelton class
@@ -16,6 +16,11 @@ GameResources& GameResources::getInstance()
     return resources;
 }
 
+
+const sf::Texture& GameResources::getSkeletonWarriorTexture(const Action& action) const
+{
+    return m_SkeltonWarrior[static_cast<int>(action)];
+}
 
 //get font
 sf::Font& GameResources::getFont(const int& index)
@@ -39,12 +44,14 @@ sf::Text& GameResources::createText(const std::string& dataName, const sf::Color
     return m_text;
 }
 
+
+
 //load the texture for the game
 void GameResources::initTextures()
 {
-    //std::array<std::string, 3> menuTextureNames{ "play.png", "help.png", "exit.png" };
-    //for (size_t i = 0; i < menuTextureNames.size(); i++)
-    //    m_menuTexture[i].loadFromFile(menuTextureNames.at(i));
+    std::array<std::string, 2> skeletonTextureNames{ "Run.png", "Attack_1.png" };
+    for (size_t i = 0; i < skeletonTextureNames.size(); i++)
+        m_SkeltonWarrior[i].loadFromFile(skeletonTextureNames.at(i));
 
 }
 

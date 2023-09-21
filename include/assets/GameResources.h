@@ -18,7 +18,7 @@ public:
 
 	//sf::Texture& getMenuTexture(const int& index);
 	//sf::Texture& getHelpTexture(const int& index);
-
+	const sf::Texture& getSkeletonWarriorTexture(const Action&) const;
 	//void playBackGroundMusic();
 	//musicCommand getMusicStatus() const;
 
@@ -34,7 +34,7 @@ private:
 	void initTextures();
 	void initFonts();
 	void initSounds();
-
+	std::array<sf::Texture, 2> m_SkeltonWarrior;
 	//members
 	sf::Text m_text;
 	std::array <sf::Font, 4> m_font;
