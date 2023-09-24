@@ -28,6 +28,8 @@ void MainMenuState::update()
 {
 	if (m_choose)
 		;// m_gameTools->m_gameStates.addState(std::make_unique<PlayState>(), true);
+	auto delta = gameClock.restart();
+	character.update(delta);
 }
 
 void MainMenuState::Draw()

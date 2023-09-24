@@ -27,5 +27,6 @@ private:
 	int m_currentOption;
 	bool m_choose;
 	Animation character;
+	sf::Clock gameClock;
 	
 };

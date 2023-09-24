@@ -1,28 +1,31 @@
 #include "Animation.h"
 #include "GameResources.h"
 
+
 Animation::Animation(const Characters& type)
-	:m_animationTime{ sf::seconds(0.1) }, m_elapsed{}, m_type{ type }, m_currentAction{Action::Run_Right}
+	:m_animationTime{ sf::seconds(0.2) }, m_elapsed{}, m_type{ type }, m_currentAction{ Action::Attack1 }, m_index{0}
 {
 	initilaize();
 }
 
 void Animation::update(sf::Time& delta)
 {
-	int index = 0;
 	m_elapsed += delta;
+	std::cout << m_elapsed.asSeconds() << "\n" ;
 	if (m_elapsed >= m_animationTime)
 	{
+		std::cout << "hj\n";
 		m_elapsed -= m_animationTime;
-		++index;
-		index %= m_characterData.m_data.find(m_currentAction)->second.size();
-		setSprite(index);
+		++m_index;
+		m_index %= m_characterData.m_data.find(m_currentAction)->second.size();
+		setSprite();
 	}
 }
 
-void Animation::setSprite(int index)
+void Animation::setSprite()
 {
-	m_Animation[static_cast<int>(Action::Run_Right)].setTextureRect(m_characterData.m_data.find(m_currentAction)->second[index]);
+	std::cout << m_index << "\n";
+	m_Animation[static_cast<int>(m_currentAction)].setTextureRect(m_characterData.m_data.find(m_currentAction)->second[m_index]);
 }
 
 void Animation::getAnimationData()
@@ -49,4 +52,6 @@ void Animation::initilaize()
 	m_Animation.emplace_back().setTexture(GameResources::getInstance().getSkeletonWarriorTexture(Action::Attack1));
 	m_Animation[static_cast<int>(Action::Run_Right)].setPosition({ 600,400 });
 	m_Animation[static_cast<int>(Action::Attack1)].setPosition({ 600,400 });
+
+	setSprite();
 }

@@ -14,7 +14,7 @@ public:
 	~Animation() = default;
 
 	void update(sf::Time&);
-	void setSprite(int index);
+	void setSprite();
 	void getAnimationData();
 	void draw(sf::RenderWindow&);
 
@@ -27,6 +27,6 @@ private:
 
 	sf::Time m_animationTime;
 	sf::Time m_elapsed;
-
+	int m_index;
 	void initilaize();
 };

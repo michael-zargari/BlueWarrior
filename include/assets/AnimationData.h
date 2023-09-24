@@ -16,6 +16,7 @@ struct AnimationData
 };
 namespace
 {
+    
     AnimationData skeletoWarriorData()
     {
         //def init
@@ -24,14 +25,14 @@ namespace
         auto initAction = [&](int dataAmount, Action action, sf::Vector2i start, sf::Vector2i size, sf::Vector2i diff)
         {
             for (int i = 0; i < dataAmount; i++)
-                skeletonData.m_data[action].emplace_back(start, size);
+                skeletonData.m_data[action].emplace_back(start + (i*diff), size);
         };
 
         //Run Settings: size{ 60,60 }, start { 30,70 }, diff = 130
         initAction(8, Action::Run_Right, sf::Vector2i{ 30, 70 }, sf::Vector2i{ 60, 60 }, sf::Vector2i{ 130, 0 });
 
         //Attack1 Settings: size{ 60,62 }, start { 20,65 }, diff = 120
-        initAction(8, Action::Run_Right, sf::Vector2i{ 20, 65 }, sf::Vector2i{ 60, 62 }, sf::Vector2i{ 120, 0 });
+        initAction(5, Action::Attack1, sf::Vector2i{ 20, 65 }, sf::Vector2i{ 60, 62 }, sf::Vector2i{ 120, 0 });
 
         return skeletonData;
     }
