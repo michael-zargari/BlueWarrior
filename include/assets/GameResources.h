@@ -16,9 +16,12 @@ public:
 	GameResources(const GameResources&) = delete; //disable copy constructor
 	GameResources operator=(const GameResources&) = delete; //disable assimenget operator
 
-	//sf::Texture& getMenuTexture(const int& index);
-	//sf::Texture& getHelpTexture(const int& index);
-	const sf::Texture& getSkeletonWarriorTexture(const Action&) const;
+	const sf::Texture& getWarriorTexture(const WarriorAction&) const;
+	const sf::Texture& getFlyingEyeTexture(const FlyingEyeAction&) const;
+	const sf::Texture& getGoblinTexture(const GoblinAction&) const;
+	const sf::Texture& getMushroomTexture(const MushroomAction&) const;
+	const sf::Texture& getSkeletonTexture(const SkeletonAction&) const;
+
 	//void playBackGroundMusic();
 	//musicCommand getMusicStatus() const;
 
@@ -34,10 +37,16 @@ private:
 	void initTextures();
 	void initFonts();
 	void initSounds();
-	std::array<sf::Texture, 2> m_SkeltonWarrior;
+	
 	//members
 	sf::Text m_text;
 	std::array <sf::Font, 4> m_font;
+
+	sf::Texture m_warrior;
+	std::array <sf::Texture, 4> m_FlyingEye;
+	std::array <sf::Texture, 5> m_Goblin;
+	std::array <sf::Texture, 5> m_Mushroom;
+	std::array <sf::Texture, 6> m_Skeleton;
 };
 
 /*//members
@@ -45,13 +54,13 @@ sf::Texture m_spriteSheet;
 sf::Texture m_lock;
 
 std::array <sf::Texture, 3> m_menuTexture;
-std::array <sf::Texture, 4> m_helpScreenTexture;//for state
+
 std::array <sf::Texture, 3> m_backGround;
-std::array <sf::Texture, 4> m_birdsTexture;
+
 std::array <sf::Texture, 2> m_rogatkaTexture;
-std::array <sf::Texture, 5> m_poofTexture;
+
 std::array <sf::Texture, 2> m_transitionScreensState;
-std::array <sf::Texture, 5> m_buttons;
+
 std::array <sf::Texture, 20> m_obstacles;
 std::array <sf::Texture, 6> m_levelsFields;
 
