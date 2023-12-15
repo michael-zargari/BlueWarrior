@@ -16,11 +16,12 @@ public:
 	GameResources(const GameResources&) = delete; //disable copy constructor
 	GameResources operator=(const GameResources&) = delete; //disable assimenget operator
 
-	const sf::Texture& getWarriorTexture(const WarriorAction&) const;
-	const sf::Texture& getFlyingEyeTexture(const FlyingEyeAction&) const;
-	const sf::Texture& getGoblinTexture(const GoblinAction&) const;
-	const sf::Texture& getMushroomTexture(const MushroomAction&) const;
-	const sf::Texture& getSkeletonTexture(const SkeletonAction&) const;
+	const sf::Texture& getCharacterTexture(const Characters& , const Action&) const;
+	const sf::Texture& getWarriorTexture(const Action&) const;
+	const sf::Texture& getFlyingEyeTexture(const Action&) const;
+	const sf::Texture& getGoblinTexture(const Action&) const;
+	const sf::Texture& getMushroomTexture(const Action&) const;
+	const sf::Texture& getSkeletonTexture(const Action&) const;
 
 	//void playBackGroundMusic();
 	//musicCommand getMusicStatus() const;
@@ -43,10 +44,10 @@ private:
 	std::array <sf::Font, 4> m_font;
 
 	sf::Texture m_warrior;
-	std::array <sf::Texture, 4> m_FlyingEye;
+	std::array <sf::Texture, 5> m_FlyingEye;
 	std::array <sf::Texture, 5> m_Goblin;
 	std::array <sf::Texture, 5> m_Mushroom;
-	std::array <sf::Texture, 6> m_Skeleton;
+	std::array <sf::Texture, 5> m_Skeleton;
 };
 
 /*//members

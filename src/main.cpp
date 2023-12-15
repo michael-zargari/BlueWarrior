@@ -1,4 +1,6 @@
 #include "Game.h"
+#include <list>
+
 
 int main()
 {

@@ -11,27 +11,22 @@
 class Animation
 {
 public:
-	Animation(const Characters&);
+	Animation(const Characters&, const AnimationData&);
 	~Animation() = default;
 
 	void update(sf::Time&);
 	void setSprite();
-	void getAnimationData();
+	void setAction(/*Action,*/ float speed);
 	void draw(sf::RenderWindow&);
 
 private:
 	Characters m_type;
-	//WarriorAction m_currentAction;
-	//FlyingEyeAction m_currentAction;
-	//GoblinAction m_currentAction;
-	//MushroomAction m_currentAction;
-	SkeletonAction m_currentAction;
+	Action m_currentAction;
 
-	AnimationData<SkeletonAction> m_characterData;
+	AnimationData m_characterData;
 	std::vector<sf::RectangleShape> m_Animation;
 
 	sf::Time m_animationTime;
 	sf::Time m_elapsed;
 	int m_index;
-	void initilaize();
 };

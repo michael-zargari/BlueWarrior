@@ -70,6 +70,6 @@ void StateMachine::Switch()
 	m_states.push(std::move(wasTop));
 	m_states.push(std::move(wasBack));
 
-	//resume the operationof the state which was in the back
+	//resume the operation of the state which was in the back
 	//m_states.top()->Resume();
 }

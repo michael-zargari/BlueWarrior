@@ -17,71 +17,86 @@ GameResources& GameResources::getInstance()
 }
 
 //===============================================================================
-const sf::Texture& GameResources::getWarriorTexture(const WarriorAction& action) const
+const sf::Texture& GameResources::getCharacterTexture(const Characters& character, const Action& action) const
+{
+    switch (character)
+    {
+    case Characters::Warrior:   return getWarriorTexture(action);
+    case Characters::FlyingEye: return getFlyingEyeTexture(action);
+    case Characters::Goblin:    return getGoblinTexture(action);
+    case Characters::Mushroom:  return getMushroomTexture(action);
+    case Characters::Skeleton:  return getSkeletonTexture(action);
+    }
+}
+
+//===============================================================================
+const sf::Texture& GameResources::getWarriorTexture(const Action& action) const
 {
     switch (action)
     {
-    case WarriorAction::Idle: 
-    case WarriorAction::Attack: 
-    case WarriorAction::Running: 
-    case WarriorAction::Jump: 
-    case WarriorAction::Falling:
-    case WarriorAction::TakeHit:
-    case WarriorAction::Death:
-    case WarriorAction::SpellCast:
-    case WarriorAction::Crouch:
-    case WarriorAction::Shield:  return m_warrior; break;
+    case Action::Attack:
+    case Action::Death:
+    case Action::Idle:
+    case Action::Move:
+    case Action::TakeHit:
+    case Action::Jump:
+    case Action::Falling:
+   // case Action::Landing:
+    case Action::SpellCast:
+    case Action::Crouch:
+    case Action::Shield:  return m_warrior; break;
     }
    
 }
+//===============================================================================
+const sf::Texture& GameResources::getFlyingEyeTexture(const Action& action) const
+{
+    switch (action)
+    {
+    case Action::Attack: return m_FlyingEye[static_cast<int>(Action::Attack)]; break;
+    case Action::Death:  return m_FlyingEye[static_cast<int>(Action::Death)]; break;
+    case Action::Idle:  return m_FlyingEye[static_cast<int>(Action::Idle)]; break;
+    case Action::Move: return m_FlyingEye[static_cast<int>(Action::Move)]; break;
+    case Action::TakeHit:return m_FlyingEye[static_cast<int>(Action::TakeHit)]; break;
+    }
+}
 
 //===============================================================================
-const sf::Texture& GameResources::getFlyingEyeTexture(const FlyingEyeAction& action) const
+const sf::Texture& GameResources::getGoblinTexture(const Action& action) const
 {
     switch (action)
     {
-    case FlyingEyeAction::Attack: return m_FlyingEye[static_cast<int>(FlyingEyeAction::Attack)]; break;
-    case FlyingEyeAction::Death:  return m_FlyingEye[static_cast<int>(FlyingEyeAction::Death)]; break;
-    case FlyingEyeAction::Flight: return m_FlyingEye[static_cast<int>(FlyingEyeAction::Flight)]; break;
-    case FlyingEyeAction::TakeHit:return m_FlyingEye[static_cast<int>(FlyingEyeAction::TakeHit)]; break;
+    case Action::Attack: return m_Goblin[static_cast<int>(Action::Attack)]; break;
+    case Action::Death:  return m_Goblin[static_cast<int>(Action::Death)]; break;
+    case Action::Idle:   return m_Goblin[static_cast<int>(Action::Idle)]; break;
+    case Action::Move:    return m_Goblin[static_cast<int>(Action::Move)]; break;
+    case Action::TakeHit:return m_Goblin[static_cast<int>(Action::TakeHit)]; break;
     }
 }
 
 //===============================================================================
-const sf::Texture& GameResources::getGoblinTexture(const GoblinAction& action) const
+const sf::Texture& GameResources::getMushroomTexture(const Action& action) const
 {
     switch (action)
     {
-    case GoblinAction::Attack: return m_Goblin[static_cast<int>(GoblinAction::Attack)]; break;
-    case GoblinAction::Death:  return m_Goblin[static_cast<int>(GoblinAction::Death)]; break;
-    case GoblinAction::Idle:   return m_Goblin[static_cast<int>(GoblinAction::Idle)]; break;
-    case GoblinAction::Run:    return m_Goblin[static_cast<int>(GoblinAction::Run)]; break;
-    case GoblinAction::TakeHit:return m_Goblin[static_cast<int>(GoblinAction::TakeHit)]; break;
+    case Action::Attack: return m_Mushroom[static_cast<int>(Action::Attack)]; break;
+    case Action::Death:  return m_Mushroom[static_cast<int>(Action::Death)]; break;
+    case Action::Idle:   return m_Mushroom[static_cast<int>(Action::Idle)]; break;
+    case Action::Move:    return m_Mushroom[static_cast<int>(Action::Move)]; break;
+    case Action::TakeHit:return m_Mushroom[static_cast<int>(Action::TakeHit)]; break;
     }
 }
 
-const sf::Texture& GameResources::getMushroomTexture(const MushroomAction& action) const
+//===============================================================================
+const sf::Texture& GameResources::getSkeletonTexture(const Action& action) const
 {
     switch (action)
     {
-    case MushroomAction::Attack: return m_Mushroom[static_cast<int>(GoblinAction::Attack)]; break;
-    case MushroomAction::Death:  return m_Mushroom[static_cast<int>(GoblinAction::Death)]; break;
-    case MushroomAction::Idle:   return m_Mushroom[static_cast<int>(GoblinAction::Idle)]; break;
-    case MushroomAction::Run:    return m_Mushroom[static_cast<int>(GoblinAction::Run)]; break;
-    case MushroomAction::TakeHit:return m_Mushroom[static_cast<int>(GoblinAction::TakeHit)]; break;
-    }
-}
-
-const sf::Texture& GameResources::getSkeletonTexture(const SkeletonAction& action) const
-{
-    switch (action)
-    {
-    case SkeletonAction::Attack: return m_Skeleton[static_cast<int>(SkeletonAction::Attack)];  break;
-    case SkeletonAction::Death:  return m_Skeleton[static_cast<int>(SkeletonAction::Death)];   break;
-    case SkeletonAction::Idle:   return m_Skeleton[static_cast<int>(SkeletonAction::Idle)];    break;
-    case SkeletonAction::Shield: return m_Skeleton[static_cast<int>(SkeletonAction::Shield)];  break;
-    case SkeletonAction::TakeHit:return m_Skeleton[static_cast<int>(SkeletonAction::TakeHit)]; break;
-    case SkeletonAction::Walk:   return m_Skeleton[static_cast<int>(SkeletonAction::Walk)];    break;
+    case Action::Attack: return m_Skeleton[static_cast<int>(Action::Attack)];  break;
+    case Action::Death:  return m_Skeleton[static_cast<int>(Action::Death)];   break;
+    case Action::Idle:   return m_Skeleton[static_cast<int>(Action::Idle)];    break;
+    case Action::Move:   return m_Skeleton[static_cast<int>(Action::Move)];    break;
+    case Action::TakeHit:return m_Skeleton[static_cast<int>(Action::TakeHit)]; break;
     }
 }
 
@@ -117,9 +132,9 @@ void GameResources::initTextures()
     m_warrior.loadFromFile("char_blue_1.png");
 
     //flying eye textures
-    std::array<std::string, 4> EvilEyeTextureNames {"flyingEyeAttack.png", "flyingEyeDeath.png", "flyingEyeFlight.png",
-                                                    "flyingEyeTakeHit.png"};
-    for (int i = 0; i < 4; i++)
+    std::array<std::string, 5> EvilEyeTextureNames {"flyingEyeAttack.png", "flyingEyeDeath.png", "flyingEyeFlight.png", 
+                                                    "flyingEyeFlight.png", "flyingEyeTakeHit.png"};
+    for (int i = 0; i < 5; i++)
         m_FlyingEye[i].loadFromFile(EvilEyeTextureNames.at(i));
 
     //goblin textures
@@ -135,9 +150,9 @@ void GameResources::initTextures()
         m_Mushroom[i].loadFromFile(mushroomTextureNames.at(i));
 
     //skeleton textures
-    std::array<std::string, 6> skeletonTextureNames {"skeletonAttack.png", "skeletonDeath.png", "skeletonIdle.png",
-                                                     "skeletonShield.png", "skeletonTakeHit.png", "skeletonWalk.png"};
-    for (int i = 0; i < 6; i++)
+    std::array<std::string, 5> skeletonTextureNames {"skeletonAttack.png", "skeletonDeath.png", "skeletonIdle.png",
+                                                         "skeletonWalk.png", "skeletonTakeHit.png"};
+    for (int i = 0; i < 5; i++)
         m_Skeleton[i].loadFromFile(skeletonTextureNames.at(i));
 }
 

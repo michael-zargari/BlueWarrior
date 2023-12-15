@@ -1,7 +1,7 @@
 #include "states/MainMenuState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<GameTools> tools)
-	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{ false }, character{Characters::Skeleton}
+	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{ false }, character{Characters::Mushroom, mushroomData()}
 {
 	initilaize();
 }
@@ -80,9 +80,10 @@ void MainMenuState::arrowPressed(const int& direction)
 
 void MainMenuState::initilaize()
 {
+	//developer name position
 	m_developerName = GameResources::getInstance().createText("Michael Zargari", sf::Color::White, 3, 25, { 700.f, 750.f });
 
-	//developer name position
+	//menu options
 	m_menuOptions[0] = GameResources::getInstance().createText("Play", sf::Color::Yellow, 2, 30, { 700.f, 100.f });
 	m_menuOptions[1] = GameResources::getInstance().createText("Help", sf::Color::White, 2, 30, { 700.f, 200.f });
 	m_menuOptions[2] = GameResources::getInstance().createText("Settings", sf::Color::White, 2, 30, { 700.f, 300.f });
