@@ -40,9 +40,8 @@ namespace
         for (auto i : actions)
         {
             animation.emplace_back().setTexture(&GameResources::getInstance().getCharacterTexture(character, i));
-            animation.back().setSize({90, 90});
-            animation.back().setOrigin({ 90 / 2, 90 / 2 });
-            animation.back().setPosition({ 600,400 });
+            animation.back().setSize({CHAR_SIZE, CHAR_SIZE});
+            animation.back().setOrigin({ CHAR_SIZE / 2, CHAR_SIZE / 2 });
         }
 
         return animation;

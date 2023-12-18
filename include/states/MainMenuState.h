@@ -1,7 +1,7 @@
 #pragma once
 
 #include "states/State.h"
-#include "assets/Animation.h"
+#include "objects/Player.h"
 #include "Game.h"
 
 class MainMenuState : public State
@@ -26,7 +26,7 @@ private:
 	std::array<sf::Text, 4> m_menuOptions;
 	int m_currentOption;
 	bool m_choose;
-	Animation character;
-	sf::Clock gameClock;
+	Player m_optionSelector;
+
 	
 };

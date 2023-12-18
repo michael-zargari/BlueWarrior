@@ -1,7 +1,7 @@
 #include "states/MainMenuState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<GameTools> tools)
-	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{ false }, character{Characters::Mushroom, mushroomData()}
+	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{ false }
 {
 	initilaize();
 }
@@ -28,8 +28,7 @@ void MainMenuState::update()
 {
 	if (m_choose)
 		;// m_gameTools->m_gameStates.addState(std::make_unique<PlayState>(), true);
-	auto delta = gameClock.restart();
-	character.update(delta);
+	m_optionSelector.updateAnimation();
 }
 
 void MainMenuState::Draw()
@@ -47,7 +46,7 @@ void MainMenuState::drawMenu()
 
 	//draw developer
 	m_gameTools->m_window.getWindow().draw(m_developerName);
-	character.draw(m_gameTools->m_window.getWindow());
+	m_optionSelector.draw(m_gameTools->m_window.getWindow());
 }
 
 void MainMenuState::handleKey(sf::Keyboard::Key& key)
@@ -70,12 +69,13 @@ void MainMenuState::handleKey(sf::Keyboard::Key& key)
 void MainMenuState::arrowPressed(const int& direction)
 {
 	m_menuOptions[m_currentOption].setOutlineThickness(0);
-	m_menuOptions[m_currentOption].setFillColor(sf::Color::White);
+	m_menuOptions[m_currentOption].setFillColor(sf::Color::Blue);
 	m_currentOption += (NUM_OF_OPTIONS + direction);
 	m_currentOption %= NUM_OF_OPTIONS;
-	m_menuOptions[m_currentOption].setFillColor(sf::Color::Yellow);
-	m_menuOptions[m_currentOption].setOutlineColor(sf::Color::Magenta);
+	m_menuOptions[m_currentOption].setFillColor(sf::Color::Blue);
+	m_menuOptions[m_currentOption].setOutlineColor(sf::Color::Yellow);
 	m_menuOptions[m_currentOption].setOutlineThickness(2);
+	m_optionSelector.changePosition({ 600,m_menuOptions[m_currentOption].getPosition().y });
 }
 
 void MainMenuState::initilaize()
@@ -84,10 +84,14 @@ void MainMenuState::initilaize()
 	m_developerName = GameResources::getInstance().createText("Michael Zargari", sf::Color::White, 3, 25, { 700.f, 750.f });
 
 	//menu options
-	m_menuOptions[0] = GameResources::getInstance().createText("Play", sf::Color::Yellow, 2, 30, { 700.f, 100.f });
-	m_menuOptions[1] = GameResources::getInstance().createText("Help", sf::Color::White, 2, 30, { 700.f, 200.f });
-	m_menuOptions[2] = GameResources::getInstance().createText("Settings", sf::Color::White, 2, 30, { 700.f, 300.f });
-	m_menuOptions[3] = GameResources::getInstance().createText("Exit", sf::Color::White, 2, 30, { 700.f, 400.f });
+	m_menuOptions[0] = GameResources::getInstance().createText(" Play", sf::Color::Blue, 2, 30, { 700.f, 100.f });
+	m_menuOptions[0].setOutlineColor(sf::Color::Yellow);
+	m_menuOptions[0].setOutlineThickness(2);
+	m_menuOptions[1] = GameResources::getInstance().createText(" Help", sf::Color::Blue, 2, 30, { 700.f, 200.f });
+	m_menuOptions[2] = GameResources::getInstance().createText("Settings", sf::Color::Blue, 2, 30, { 700.f, 300.f });
+	m_menuOptions[3] = GameResources::getInstance().createText(" Exit", sf::Color::Blue, 2, 30, { 700.f, 400.f });
 
+	m_optionSelector.setAction(Action::Idle, 0.2);
+	m_optionSelector.changePosition({ 600, 100 });
 }
 
