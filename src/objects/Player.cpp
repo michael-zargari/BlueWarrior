@@ -5,7 +5,7 @@ Player::Player()
 {
 }
 
-void Player::checkForEvent()
+bool Player::checkForEvent()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
@@ -15,6 +15,8 @@ void Player::checkForEvent()
 			currDir = -1;
 		}
 		setUpForAction({ -1, 0 }, Action::Move, 0.15f);
+
+		return true;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
@@ -25,6 +27,8 @@ void Player::checkForEvent()
 		}
 			
 		setUpForAction({ 1, 0 }, Action::Move, 0.15f);
+
+		return true;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
@@ -38,6 +42,8 @@ void Player::checkForEvent()
 		setUpForAction({ 0, 0 }, Action::SpellCast, 0.15f);
 	else
 		setUpForAction({ 0, 0 }, Action::Idle, 0.2f);
+
+	return false;
 }
 
 void Player::setUpForAction(const sf::Vector2f& direction, const Action& action, const float& speed)
@@ -54,15 +60,16 @@ void Player::setUpForAction(const sf::Vector2f& direction, const Action& action,
 
 void Player::update()
 {
-	checkForEvent();
-	updatePhysic();
+	updatePhysic(checkForEvent());
 	move();
 	updateAnimation();
 }
 
 void Player::move()
 {
-	auto newPos = m_direction.x * getVelocity();//(0.15f * delta.asMilliseconds());//physic
+	//newPos.x responsible on the direction so we multiply by the velocity.x value
+	//newPos.y responsible on the gravity so we add the value velocity.y
+	auto newPos = sf::Vector2f(m_direction.x * getVelocity().x, m_direction.y + getVelocity().y);
 	newPos += getCurrentPosition();
 	changePosition(newPos);
 	setVelocity(0,0);

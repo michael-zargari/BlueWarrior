@@ -45,17 +45,19 @@ sf::Time MovingObjects::getElapsedTime()
 }
 
 void MovingObjects::setVelocity(float x, float y)
+/*this function change back the velocity after the movement update*/
 {
 	m_velocity.x = x;
 	m_velocity.y = y;
 }
 
-void MovingObjects::updatePhysic()
+void MovingObjects::updatePhysic(bool movment)
 {
 	auto deltaTime = getElapsedTime().asMilliseconds();
 
-	m_velocity.x += deltaTime * 0.15f;
-	
+	if(movment)
+		m_velocity.x += deltaTime * 0.15f;
+	m_velocity.y += deltaTime * 0.15f * 0.9;
 }
 
 float MovingObjects::norm(const sf::Vector2f& velocity)

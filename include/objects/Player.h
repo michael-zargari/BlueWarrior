@@ -8,7 +8,7 @@ public:
 	Player();
 	~Player() = default;
 
-	void checkForEvent();
+	bool checkForEvent();
 	void setUpForAction(const sf::Vector2f&, const Action&, const float&);
 	void update() override;
 	void move() override;

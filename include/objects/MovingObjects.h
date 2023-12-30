@@ -32,7 +32,7 @@ public:
 	//Physic
 	sf::Time getElapsedTime();
 	void setVelocity(float, float);
-	void updatePhysic();
+	void updatePhysic(bool);
 	float norm(const sf::Vector2f&);
 	bool isJumping() { return Jumping; }
 	void setJumping(bool jumping = true) { Jumping = jumping; }
