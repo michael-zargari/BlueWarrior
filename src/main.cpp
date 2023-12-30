@@ -1,6 +1,6 @@
 #include "Game.h"
 #include <list>
-
+#include <SFML/Graphics.hpp>
 
 int main()
 {

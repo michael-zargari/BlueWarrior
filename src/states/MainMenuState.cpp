@@ -1,4 +1,5 @@
 #include "states/MainMenuState.h"
+#include "states/PlayState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<GameTools> tools)
 	:m_gameTools(tools), m_currentOption{ 0 }, m_choose{ false }
@@ -27,7 +28,7 @@ void MainMenuState::processManeger()
 void MainMenuState::update()
 {
 	if (m_choose)
-		;// m_gameTools->m_gameStates.addState(std::make_unique<PlayState>(), true);
+		m_gameTools->m_gameStates.addState(std::make_unique<PlayState>(this->m_gameTools), true);
 	m_optionSelector.updateAnimation();
 }
 
@@ -75,7 +76,7 @@ void MainMenuState::arrowPressed(const int& direction)
 	m_menuOptions[m_currentOption].setFillColor(sf::Color::Blue);
 	m_menuOptions[m_currentOption].setOutlineColor(sf::Color::Yellow);
 	m_menuOptions[m_currentOption].setOutlineThickness(2);
-	m_optionSelector.changePosition({ 600,m_menuOptions[m_currentOption].getPosition().y });
+	m_optionSelector.changePosition({ 600,m_menuOptions[m_currentOption].getPosition().y});
 }
 
 void MainMenuState::initilaize()

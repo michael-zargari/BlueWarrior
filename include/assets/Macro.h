@@ -25,7 +25,7 @@ enum class Action { Attack, Death, Idle, Move, TakeHit, Jump, Falling/*,Landing*
 
 
 
-//velocity = מהירות
+//velocity = מהירות(שינוי מקום בהינתן זמן מסויים)ל
 /*In this answer I assume you are using C++ Object Oriented Programming. If you are using another language, then hopefully you are still able to make use of my answer.
 
 Do what drumbumLOLcatz said, and do collision detecting. This link has some good examples in JavaScript, which is easy enough to understand and convert to any other language. And a quick Google search should bring up plenty of pages describing in depth collision detecting and how to implement it.

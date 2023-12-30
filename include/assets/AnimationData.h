@@ -42,6 +42,7 @@ namespace
             animation.emplace_back().setTexture(&GameResources::getInstance().getCharacterTexture(character, i));
             animation.back().setSize({CHAR_SIZE, CHAR_SIZE});
             animation.back().setOrigin({ CHAR_SIZE / 2, CHAR_SIZE / 2 });
+            animation.back().setPosition({0,0});
         }
 
         return animation;
