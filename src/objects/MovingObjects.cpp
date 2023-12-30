@@ -94,7 +94,7 @@ void MovingObjects::initAnimationSettings(const Characters& type, const Animatio
 
 void MovingObjects::initPhysic(int gravity, int weight)
 {
-	m_velocity = { 0,0 };
+	m_velocity = { 0,0 };//velocity.x = how much to move in the given time that pass
 	m_gravity = gravity;
 	Jumping = false;
 	movementClock.restart();

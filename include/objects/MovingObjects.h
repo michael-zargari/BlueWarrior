@@ -61,7 +61,8 @@ private:
 	//-----------for Physic-----------------
 	sf::Clock movementClock;
 
-	sf::Vector2f m_velocity;
+	sf::Vector2f m_velocity;//How much to move according to the elapsed time - x = direction(left or right) 
+							//                                                 y = gravity, always applying on moving object
 	int m_gravity;
 	int m_weight;
 	

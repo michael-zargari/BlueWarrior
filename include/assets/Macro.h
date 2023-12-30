@@ -16,9 +16,10 @@ enum class Characters {Warrior, FlyingEye, Goblin, Mushroom, Skeleton};
 enum class Action { Attack, Death, Idle, Move, TakeHit, Jump, Falling/*,Landing*/,  SpellCast, Crouch, Shield  };
 
 
-/*================animation speed============
-*------------- warrior-------------------
-* move = 0.2
+/* notes for me
+* created gravity, need to work on collision detection.
+* after that need to work on jump and fall methods/
+* then on the attack.
 * 
+* after all this on enemys and game logic.
 */
-//velocity = מהירות(שינוי מקום בהינתן זמן מסויים)ל
