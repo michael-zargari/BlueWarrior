@@ -17,9 +17,17 @@ enum class Action { Attack, Death, Idle, Move, TakeHit, Jump, Falling/*,Landing*
 
 
 /* notes for me
-* created gravity, need to work on collision detection.
+* start to work on collisions by doing those action:
+* - by creating the class StaticObject that for now eill act as a tile - after we need to change that.
+* - created member of tile in play state.
+* - in both moving and static object classes created the method getGlobalBonds to get the floatRect of the object/
+* - in the player class created the function checkForCollision and collisionWithTile to handle with the collision with the tile.
+* next time: to create collision table(multymethods) and to improve the collision.
+* 
 * after that need to work on jump and fall methods/
 * then on the attack.
 * 
 * after all this on enemys and game logic.
+* 
+* NOTICE: find some time to organize all the objects methods - NOW THIS IS NOT DESIGN AS OOP!!!!!!!
 */

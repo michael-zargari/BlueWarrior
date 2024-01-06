@@ -7,7 +7,7 @@ public:
 	Object() = default;
 	virtual ~Object() = default;
 
-	virtual void update() = 0;
+	
 	virtual void draw(sf::RenderWindow&) = 0;
 
 private:

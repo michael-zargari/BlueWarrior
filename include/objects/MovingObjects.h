@@ -22,7 +22,8 @@ public:
 
 	//getters/setters
 	void setHp(int toAdd) { m_hp += toAdd; };
-	sf::Vector2f getCurrentPosition();
+	sf::Vector2f getCurrentPosition() const;
+	sf::FloatRect getGlobalBonds() const;
 
 	//Animation
 	void updateAnimation();
@@ -45,7 +46,7 @@ private:
 	int m_hp;
 
 	std::vector<sf::RectangleShape> m_character;//vector that holds all the textures for the character
-
+	virtual void update() = 0;
 	//------------for animation----------
 	Action m_currentAction;
 

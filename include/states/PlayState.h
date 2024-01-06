@@ -3,6 +3,7 @@
 #include "State.h"
 #include "Game.h"
 #include "objects/Player.h"
+#include "objects/StaticObject.h"
 
 class PlayState :public State
 {
@@ -20,4 +21,5 @@ protected:
 private:
 	std::shared_ptr<GameTools> m_gameTools;
 	Player m_warrior;
+	StaticObject tile;
 };

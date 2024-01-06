@@ -7,9 +7,14 @@ MovingObjects::MovingObjects(const Characters& type, const AnimationData& data, 
 	initPhysic(10, 5);
 }
 
-sf::Vector2f MovingObjects::getCurrentPosition()
+sf::Vector2f MovingObjects::getCurrentPosition() const
 {
 	return m_character.back().getPosition();
+}
+
+sf::FloatRect MovingObjects::getGlobalBonds() const
+{
+	return m_character.back().getGlobalBounds();
 }
 
 

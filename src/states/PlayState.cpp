@@ -30,12 +30,14 @@ void PlayState::processManeger()
 void PlayState::update()
 {
 	m_warrior.update();
+	m_warrior.checkForCollision(tile.getGlobalBonds());
 }
 
 void PlayState::Draw()
 {
 	m_gameTools->m_window.getWindow().clear();
 	m_warrior.draw(this->m_gameTools->m_window.getWindow());
+	tile.draw(this->m_gameTools->m_window.getWindow());
 	m_gameTools->m_window.getWindow().display();
 	
 }

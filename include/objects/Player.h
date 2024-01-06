@@ -12,6 +12,8 @@ public:
 	void setUpForAction(const sf::Vector2f&, const Action&, const float&);
 	void update() override;
 	void move() override;
+	void checkForCollision(sf::FloatRect);
+	void collisionWithTile();
 	//void jump();
 	//void fall();
 	//void attack() override;
@@ -23,5 +25,6 @@ private:
 	float m_startingY;
 	float m_currY;
 	float jumpForce = 50.f;
+	float changeDueGravity;
 };
 
