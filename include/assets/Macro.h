@@ -16,13 +16,13 @@ enum class Characters {Warrior, FlyingEye, Goblin, Mushroom, Skeleton};
 enum class Action { Attack, Death, Idle, Move, TakeHit, Jump, Falling/*,Landing*/,  SpellCast, Crouch, Shield  };
 
 
-/* notes for me
+/* notes for me 
 * start to work on collisions by doing those action:
-* - by creating the class StaticObject that for now eill act as a tile - after we need to change that.
+* - by creating the class StaticObject that for now fill act as a tile - after we need to change that.
 * - created member of tile in play state.
 * - in both moving and static object classes created the method getGlobalBonds to get the floatRect of the object/
-* - in the player class created the function checkForCollision and collisionWithTile to handle with the collision with the tile.
-* next time: to create collision table(multymethods) and to improve the collision.
+* - created collision table
+* next time: to improve the collision.
 * 
 * after that need to work on jump and fall methods/
 * then on the attack.

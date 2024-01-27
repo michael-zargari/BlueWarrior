@@ -15,6 +15,7 @@ public:
 
 	//methhods - actions
 	virtual void move() = 0;
+	virtual void update() = 0;
 	//virtual void attack() = 0;
 
 	void changePosition(const sf::Vector2f&);
@@ -22,6 +23,7 @@ public:
 
 	//getters/setters
 	void setHp(int toAdd) { m_hp += toAdd; };
+	sf::Vector2f getpreviousPosition() const { return m_lastPosition; }
 	sf::Vector2f getCurrentPosition() const;
 	sf::FloatRect getGlobalBonds() const;
 
@@ -46,7 +48,7 @@ private:
 	int m_hp;
 
 	std::vector<sf::RectangleShape> m_character;//vector that holds all the textures for the character
-	virtual void update() = 0;
+	sf::Vector2f m_lastPosition;
 	//------------for animation----------
 	Action m_currentAction;
 

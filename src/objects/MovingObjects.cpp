@@ -77,6 +77,7 @@ void MovingObjects::draw(sf::RenderWindow& window)
 
 void MovingObjects::changePosition(const sf::Vector2f& newPos)
 {
+	m_lastPosition = m_character.back().getPosition();
 	for (auto& i : m_character)
 		i.setPosition(newPos);
 }

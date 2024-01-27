@@ -69,24 +69,22 @@ void Player::move()
 {
 	//newPos.x responsible on the direction so we multiply by the velocity.x value
 	//newPos.y responsible on the gravity so we add the value velocity.y
-	changeDueGravity = m_direction.y + getVelocity().y;
 	auto newPos = sf::Vector2f(m_direction.x * getVelocity().x, m_direction.y + getVelocity().y);
 	newPos += getCurrentPosition();
 	changePosition(newPos);
 	setVelocity(0,0);
 }
 
-void Player::checkForCollision(sf::FloatRect other)
+bool Player::checkForCollision(sf::FloatRect other)
 {
-	if (getGlobalBonds().intersects(other))
-		collisionWithTile();
+	return getGlobalBonds().intersects(other);
 }
 
 void Player::collisionWithTile()
 {
 	sf::Vector2f newPos;
 	newPos = getCurrentPosition();
-	newPos.y -= changeDueGravity;
+	newPos.y = getpreviousPosition().y;
 	changePosition(newPos);
 }
 

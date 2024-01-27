@@ -30,7 +30,8 @@ void PlayState::processManeger()
 void PlayState::update()
 {
 	m_warrior.update();
-	m_warrior.checkForCollision(tile.getGlobalBonds());
+	if (m_warrior.checkForCollision(tile.getGlobalBonds()))
+		handleCollision(m_warrior, tile);
 }
 
 void PlayState::Draw()

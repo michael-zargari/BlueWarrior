@@ -23,3 +23,5 @@ private:
 	Player m_warrior;
 	StaticObject tile;
 };
+
+void handleCollision(Object& object1, Object& object2);
